@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-import ContactScene from "../models/ContactScene";
 import { profile } from "../data";
 
 const Contact = () => {
@@ -25,93 +23,83 @@ const Contact = () => {
         </p>
       </div>
 
-      <div className="contact-grid">
-        {/* Direct Contact Cards */}
-        <div>
-          <p style={{ color: "var(--text-muted)", fontSize: "1.05rem", lineHeight: "1.7", marginBottom: "2rem" }}>
-            I am actively looking for software engineering roles, technical consulting, and blockchain opportunities. You can reach me directly anytime:
-          </p>
+      {/* Centered Direct Contact Cards */}
+      <div className="contact-cards-grid">
+        {profile.email && (
+          <a
+            href={`mailto:${profile.email}`}
+            className="contact-direct-card"
+          >
+            <div className="card-top-row">
+              <div className="card-icon-wrap" style={{ background: "rgba(6,182,212,0.12)", color: "var(--secondary)", border: "1px solid rgba(6,182,212,0.25)" }}>
+                ✉️
+              </div>
+              <span className="card-action-btn">Send Email ↗</span>
+            </div>
+            <div>
+              <div style={{ fontSize: "0.72rem", color: "var(--text-dim)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.2rem" }}>Email Address</div>
+              <div style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--text)", wordBreak: "break-all" }}>{profile.email}</div>
+            </div>
+          </a>
+        )}
 
-          <div className="contact-links-alt" style={{ gap: "1rem" }}>
-            {profile.email && (
-              <a
-                href={`mailto:${profile.email}`}
-                className="contact-link-item"
-                style={{ padding: "1.1rem 1.3rem", fontSize: "0.95rem" }}
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" style={{ width: "22px", height: "22px", color: "var(--secondary)" }}>
-                  <rect x="2" y="4" width="20" height="16" rx="2" />
-                  <path d="m2 7 10 7 10-7" />
-                </svg>
-                <div>
-                  <div style={{ fontSize: "0.72rem", color: "var(--text-dim)", textTransform: "uppercase", letterSpacing: "0.08em" }}>Email Address</div>
-                  <div style={{ fontWeight: 600, color: "var(--text)" }}>{profile.email}</div>
-                </div>
-              </a>
-            )}
+        {profile.linkedin && (
+          <a
+            href={profile.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-direct-card"
+          >
+            <div className="card-top-row">
+              <div className="card-icon-wrap" style={{ background: "rgba(10,102,194,0.15)", color: "#38bdf8", border: "1px solid rgba(10,102,194,0.3)" }}>
+                💼
+              </div>
+              <span className="card-action-btn">Connect ↗</span>
+            </div>
+            <div>
+              <div style={{ fontSize: "0.72rem", color: "var(--text-dim)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.2rem" }}>LinkedIn Profile</div>
+              <div style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--text)" }}>Siddhika Rathore</div>
+            </div>
+          </a>
+        )}
 
-            {profile.linkedin && (
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-link-item"
-                style={{ padding: "1.1rem 1.3rem", fontSize: "0.95rem" }}
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: "22px", height: "22px", color: "#0a66c2" }}>
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                  <rect x="2" y="9" width="4" height="12" />
-                  <circle cx="4" cy="4" r="2" />
-                </svg>
-                <div>
-                  <div style={{ fontSize: "0.72rem", color: "var(--text-dim)", textTransform: "uppercase", letterSpacing: "0.08em" }}>LinkedIn Profile</div>
-                  <div style={{ fontWeight: 600, color: "var(--text)" }}>linkedin.com/in/siddhika-rathore ↗</div>
-                </div>
-              </a>
-            )}
+        {profile.github && (
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-direct-card"
+          >
+            <div className="card-top-row">
+              <div className="card-icon-wrap" style={{ background: "rgba(255,255,255,0.08)", color: "#f8fafc", border: "1px solid rgba(255,255,255,0.18)" }}>
+                🐙
+              </div>
+              <span className="card-action-btn">View Code ↗</span>
+            </div>
+            <div>
+              <div style={{ fontSize: "0.72rem", color: "var(--text-dim)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.2rem" }}>GitHub Profile</div>
+              <div style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--text)" }}>@siddhika-rathore</div>
+            </div>
+          </a>
+        )}
 
-            {profile.github && (
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-link-item"
-                style={{ padding: "1.1rem 1.3rem", fontSize: "0.95rem" }}
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: "22px", height: "22px", color: "#f8fafc" }}>
-                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                </svg>
-                <div>
-                  <div style={{ fontSize: "0.72rem", color: "var(--text-dim)", textTransform: "uppercase", letterSpacing: "0.08em" }}>GitHub Profile</div>
-                  <div style={{ fontWeight: 600, color: "var(--text)" }}>github.com/siddhika-rathore ↗</div>
-                </div>
-              </a>
-            )}
-
-            {profile.phone && (
-              <a
-                href={`tel:${profile.phone}`}
-                className="contact-link-item"
-                style={{ padding: "1.1rem 1.3rem", fontSize: "0.95rem" }}
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" style={{ width: "22px", height: "22px", color: "var(--green)" }}>
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z" />
-                </svg>
-                <div>
-                  <div style={{ fontSize: "0.72rem", color: "var(--text-dim)", textTransform: "uppercase", letterSpacing: "0.08em" }}>Phone / WhatsApp</div>
-                  <div style={{ fontWeight: 600, color: "var(--text)" }}>{profile.phone}</div>
-                </div>
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* ── 3D Contact Scene ── */}
-        <div className="contact-3d-wrap">
-          <Suspense fallback={<div className="loader-wrap"><div className="loader"></div></div>}>
-            <ContactScene currentAnimation="idle" />
-          </Suspense>
-        </div>
+        {profile.phone && (
+          <a
+            href={`tel:${profile.phone}`}
+            className="contact-direct-card"
+          >
+            <div className="card-top-row">
+              <div className="card-icon-wrap" style={{ background: "rgba(52,211,153,0.12)", color: "#34d399", border: "1px solid rgba(52,211,153,0.25)" }}>
+                📞
+              </div>
+              <span className="card-action-btn">Call / WhatsApp ↗</span>
+            </div>
+            <div>
+              <div style={{ fontSize: "0.72rem", color: "var(--text-dim)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.2rem" }}>Phone Number</div>
+              <div style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--text)" }}>{profile.phone}</div>
+            </div>
+          </a>
+        )}
       </div>
     </section>
   );
