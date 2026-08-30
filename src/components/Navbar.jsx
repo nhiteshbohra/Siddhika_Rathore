@@ -67,32 +67,12 @@ const Navbar = () => {
         ))}
       </ul>
 
-      <div style={{ display: "flex", alignItems: "center", gap: "0.8rem" }}>
-        {profile.resumeUrl && (
-          <a
-            href={profile.resumeUrl}
-            download="Siddhika_Rathore_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline"
-            style={{
-              padding: "0.55rem 1.3rem",
-              fontSize: "0.82rem",
-              fontWeight: 600,
-              textDecoration: "none",
-            }}
-          >
-            Resume 📄
-          </a>
-        )}
-
-        <button
-          className="nav-cta"
-          onClick={() => handleNavClick({ id: "contact", to: "/contact" })}
-        >
-          Hire Me ↗
-        </button>
-      </div>
+      <button
+        className="nav-cta"
+        onClick={() => handleNavClick({ id: "contact", to: "/contact" })}
+      >
+        Hire Me ↗
+      </button>
 
       <button
         className="hamburger"
