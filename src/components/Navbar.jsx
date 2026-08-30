@@ -67,12 +67,6 @@ const Navbar = () => {
         ))}
       </ul>
 
-      <button
-        className="nav-cta"
-        onClick={() => handleNavClick({ id: "contact", to: "/contact" })}
-      >
-        Hire Me ↗
-      </button>
 
       <button
         className="hamburger"
