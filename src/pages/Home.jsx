@@ -1,7 +1,5 @@
 import { Suspense, useEffect, useRef } from "react";
-import HeroCanvas from "../models/HeroScene";
 import SkillSphere from "../models/SkillSphere";
-import ContactScene from "../models/ContactScene";
 import useAlert from "../hooks/useAlert";
 import {
   profile,
@@ -12,7 +10,6 @@ import {
   education,
   certifications,
 } from "../data";
-import { sendContactMessage } from "../utils/sendEmail";
 
 const Home = () => {
   const { alert, showAlert, hideAlert } = useAlert();
@@ -68,13 +65,6 @@ const Home = () => {
           1. HERO SECTION
       ══════════════════════════════════════════ */}
       <div id="hero" className="hero-section">
-        {/* 3D Particle Canvas */}
-        <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-          <Suspense fallback={null}>
-            <HeroCanvas />
-          </Suspense>
-        </div>
-
         {/* Hero Text Overlay */}
         <div className="hero-info-overlay">
           {profile.statusBadge && (

@@ -36,10 +36,22 @@ body {
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 2px; }
 
+/* ─── GLOBAL 3D BACKGROUND ─── */
+.global-3d-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
 /* ─── LAYOUT ─── */
-.max-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-.section-pad { padding: 3.5rem 2rem 4rem; }
-.page-pad { padding: 2rem 2rem 4.5rem; }
+.max-container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+.section-pad { padding: 3.5rem 2rem 4rem; position: relative; z-index: 1; }
+.page-pad { padding: 2rem 2rem 4.5rem; position: relative; z-index: 1; }
 
 /* ─── NAV ─── */
 .navbar {

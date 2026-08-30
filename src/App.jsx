@@ -1,13 +1,22 @@
+import { Suspense } from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import HeroCanvas from "./models/HeroScene";
 import { Home, About, Skills, Experience, Projects, Education, Contact } from "./pages";
 import "./index.css";
 
 function App() {
   return (
     <Router>
-      {/* Background ambient blobs */}
+      {/* Persistent Global 3D Particle & Wireframe Universe Canvas */}
+      <div className="global-3d-bg">
+        <Suspense fallback={null}>
+          <HeroCanvas />
+        </Suspense>
+      </div>
+
+      {/* Background ambient gradient glow blobs */}
       <div className="bg-blob blob1" />
       <div className="bg-blob blob2" />
       <div className="bg-blob blob3" />
