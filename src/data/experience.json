@@ -1,0 +1,21 @@
+[
+  {
+    "id": "c3ihub-iit-kanpur",
+    "title": "Summer Intern — Software / Blockchain Development",
+    "company": "C3iHub · IIT Kanpur",
+    "type": "Internship",
+    "mode": "On-site",
+    "location": "Kanpur, India",
+    "startDate": "May 2025",
+    "endDate": "July 2025",
+    "iconBg": "#06b6d4",
+    "description": "Worked at C3iHub, IIT Kanpur's National Cybersecurity Reference Framework, gaining hands-on experience in blockchain engineering and smart contract development.",
+    "responsibilities": [
+      "Learned core blockchain concepts: blocks, hashing, smart contracts, consensus mechanisms, and decentralized architecture.",
+      "Developed and tested smart contracts using Solidity for real-world use cases such as voting and secure data storage.",
+      "Integrated blockchain logic with backend services using Web3.py for transaction handling and data retrieval.",
+      "Contributed to a blockchain-based e-voting system, focusing on transparency, immutability, and secure vote casting."
+    ],
+    "techStack": ["Solidity", "Ethereum", "Web3.py", "Python", "HTML", "CSS"]
+  }
+]

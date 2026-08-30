@@ -1,0 +1,86 @@
+{
+  "categories": [
+    {
+      "id": "blockchain",
+      "title": "⛓ Blockchain & Web3",
+      "color": "#06b6d4",
+      "bg": "rgba(6,182,212,0.06)",
+      "border": "rgba(6,182,212,0.25)",
+      "chipColor": "rgba(6,182,212,0.12)",
+      "chipText": "#67e8f9",
+      "chipBorder": "rgba(6,182,212,0.2)"
+    },
+    {
+      "id": "crm",
+      "title": "☁ Cloud & CRM",
+      "color": "#f59e0b",
+      "bg": "rgba(245,158,11,0.06)",
+      "border": "rgba(245,158,11,0.25)",
+      "chipColor": "rgba(245,158,11,0.12)",
+      "chipText": "#fcd34d",
+      "chipBorder": "rgba(245,158,11,0.2)"
+    },
+    {
+      "id": "languages",
+      "title": "💻 Languages",
+      "color": "#ec4899",
+      "bg": "rgba(236,72,153,0.06)",
+      "border": "rgba(236,72,153,0.25)",
+      "chipColor": "rgba(236,72,153,0.12)",
+      "chipText": "#f9a8d4",
+      "chipBorder": "rgba(236,72,153,0.2)"
+    },
+    {
+      "id": "web",
+      "title": "🌐 Web & Backend",
+      "color": "#a78bfa",
+      "bg": "rgba(167,139,250,0.06)",
+      "border": "rgba(167,139,250,0.25)",
+      "chipColor": "rgba(167,139,250,0.12)",
+      "chipText": "#c4b5fd",
+      "chipBorder": "rgba(167,139,250,0.2)"
+    },
+    {
+      "id": "cs",
+      "title": "🛠 Tools & CS Concepts",
+      "color": "#94a3b8",
+      "bg": "rgba(148,163,184,0.06)",
+      "border": "rgba(148,163,184,0.2)",
+      "chipColor": "rgba(148,163,184,0.08)",
+      "chipText": "#cbd5e1",
+      "chipBorder": "rgba(148,163,184,0.18)"
+    }
+  ],
+  "items": [
+    { "name": "Solidity", "category": "blockchain", "color": "#06b6d4" },
+    { "name": "Ethereum", "category": "blockchain", "color": "#06b6d4" },
+    { "name": "Web3.py", "category": "blockchain", "color": "#06b6d4" },
+    { "name": "Smart Contracts", "category": "blockchain", "color": "#06b6d4" },
+    { "name": "Quorum", "category": "blockchain", "color": "#06b6d4" },
+    { "name": "Hyperledger Fabric", "category": "blockchain", "color": "#06b6d4" },
+    { "name": "Remix IDE", "category": "blockchain", "color": "#06b6d4" },
+    { "name": "Salesforce", "category": "crm", "color": "#f59e0b" },
+    { "name": "Agentforce", "category": "crm", "color": "#f59e0b" },
+    { "name": "CRM Administration", "category": "crm", "color": "#f59e0b" },
+    { "name": "Trailhead", "category": "crm", "color": "#f59e0b" },
+    { "name": "Python", "category": "languages", "color": "#ec4899" },
+    { "name": "Java", "category": "languages", "color": "#ec4899" },
+    { "name": "C", "category": "languages", "color": "#ec4899" },
+    { "name": "HTML", "category": "web", "color": "#a78bfa" },
+    { "name": "CSS", "category": "web", "color": "#a78bfa" },
+    { "name": "JavaScript", "category": "web", "color": "#a78bfa" },
+    { "name": "REST APIs", "category": "web", "color": "#a78bfa" },
+    { "name": "MySQL", "category": "web", "color": "#34d399" },
+    { "name": "CRUD Operations", "category": "web", "color": "#34d399" },
+    { "name": "Git", "category": "cs", "color": "#f97316" },
+    { "name": "GitHub", "category": "cs", "color": "#f97316" },
+    { "name": "VS Code", "category": "cs", "color": "#f97316" },
+    { "name": "DSA", "category": "cs", "color": "#94a3b8" },
+    { "name": "OOP", "category": "cs", "color": "#94a3b8" },
+    { "name": "SDLC", "category": "cs", "color": "#94a3b8" },
+    { "name": "Agile", "category": "cs", "color": "#94a3b8" },
+    { "name": "DBMS", "category": "cs", "color": "#94a3b8" },
+    { "name": "OS", "category": "cs", "color": "#94a3b8" },
+    { "name": "Networking", "category": "cs", "color": "#94a3b8" }
+  ]
+}
