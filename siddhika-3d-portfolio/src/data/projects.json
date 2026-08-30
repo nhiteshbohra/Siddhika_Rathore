@@ -1,0 +1,35 @@
+[
+  {
+    "id": "e-voting-system",
+    "name": "Blockchain-Based E-Voting System",
+    "icon": "⛓",
+    "color": "#06b6d4",
+    "cardClass": "pc-cyan",
+    "description": "Designed a decentralized voting platform for college-wide student body elections with secure voter registration. Implemented tamper-proof smart contract logic for automated, transparent vote counting — ensuring full immutability and audit trails.",
+    "stack": ["Solidity", "Ethereum", "Web3.py", "Python", "HTML", "CSS"],
+    "liveUrl": "",
+    "githubUrl": ""
+  },
+  {
+    "id": "salesforce-onboarding",
+    "name": "Employee Onboarding Assistant",
+    "icon": "🤖",
+    "color": "#f59e0b",
+    "cardClass": "pc-amber",
+    "description": "Built a Salesforce application that automatically creates onboarding tasks for new employees and sends reminders for pending items. Developed an AI chatbot using Agentforce enabling employees to ask questions and check task status in real time.",
+    "stack": ["Salesforce", "Agentforce", "CRM", "AI Chatbot"],
+    "liveUrl": "",
+    "githubUrl": ""
+  },
+  {
+    "id": "quorum-explorer",
+    "name": "Quorum Blockchain Explorer",
+    "icon": "🔍",
+    "color": "#a78bfa",
+    "cardClass": "pc-purple",
+    "description": "Built a permissioned blockchain explorer with role-based access control and real-time transaction tracking on a Quorum network. Implemented secure data access and event monitoring through integrated backend/frontend development.",
+    "stack": ["Quorum", "Blockchain", "Full-Stack", "RBAC"],
+    "liveUrl": "",
+    "githubUrl": ""
+  }
+]
