@@ -75,7 +75,7 @@ function SkillNode({ skill, position, isHovered, onHover, onUnhover }) {
   const meshRef = useRef();
   const haloRef = useRef();
 
-  useFrame((state) => {
+  useFrame(() => {
     if (meshRef.current) {
       const scale = isHovered ? 1.45 : 1.0;
       meshRef.current.scale.lerp(new THREE.Vector3(scale, scale, scale), 0.15);

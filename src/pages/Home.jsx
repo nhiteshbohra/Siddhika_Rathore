@@ -1,6 +1,5 @@
 import { Suspense, useEffect, useRef } from "react";
 import SkillSphere from "../models/SkillSphere";
-import useAlert from "../hooks/useAlert";
 import {
   profile,
   skills,
@@ -12,8 +11,6 @@ import {
 } from "../data";
 
 const Home = () => {
-  const { alert, showAlert, hideAlert } = useAlert();
-  const formRef = useRef(null);
   const observeRefs = useRef([]);
 
   useEffect(() => {
@@ -36,26 +33,6 @@ const Home = () => {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  const handleContactSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const payload = {
-      name: formData.get("name") || "",
-      email: formData.get("email") || "",
-      message: formData.get("message") || "",
-    };
-    try {
-      const res = await sendContactMessage(payload);
-      showAlert({ text: res.message || "Message sent! I'll get back to you soon 🚀", type: "success" });
-      if (formRef.current) formRef.current.reset();
-    } catch (err) {
-      console.error(err);
-      showAlert({ text: err.message || "Could not send message. Please email me directly!", type: "danger" });
-    } finally {
-      setTimeout(hideAlert, 5000);
     }
   };
 
