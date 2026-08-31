@@ -1,8 +1,21 @@
-import { useRef, useMemo, useState, Suspense } from "react";
+import { useRef, useMemo, useState, useEffect, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Float, Html, Stars } from "@react-three/drei";
+import { OrbitControls, Html, Stars } from "@react-three/drei";
 import * as THREE from "three";
 import { skills, skillCategories } from "../data";
+
+// ─── Mobile Detection Hook ───
+function useIsMobile(breakpoint = 600) {
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== "undefined" ? window.innerWidth <= breakpoint : false
+  );
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= breakpoint);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [breakpoint]);
+  return isMobile;
+}
 
 // ─── Central Holographic Quantum Core ───
 function QuantumCore() {
@@ -112,7 +125,7 @@ function SkillNode({ skill, position, isHovered, onHover, onUnhover }) {
       <Html
         position={[0, 0.95, 0]}
         center
-        distanceFactor={18}
+        distanceFactor={skill._isMobile ? 14 : 18}
         style={{ pointerEvents: "none", userSelect: "none" }}
       >
         <div
@@ -123,9 +136,11 @@ function SkillNode({ skill, position, isHovered, onHover, onUnhover }) {
             border: `1px solid ${isHovered ? color : "rgba(255,255,255,0.12)"}`,
             boxShadow: isHovered ? `0 0 20px ${color}88` : "none",
             borderRadius: "100px",
-            padding: isHovered ? "0.35rem 0.9rem" : "0.25rem 0.65rem",
+            padding: isHovered ? "0.3rem 0.7rem" : "0.2rem 0.5rem",
             color: isHovered ? "#ffffff" : "#e2e8f0",
-            fontSize: isHovered ? "0.85rem" : "0.72rem",
+            fontSize: skill._isMobile
+              ? (isHovered ? "0.68rem" : "0.58rem")
+              : (isHovered ? "0.85rem" : "0.72rem"),
             fontWeight: isHovered ? 700 : 500,
             whiteSpace: "nowrap",
             backdropFilter: "blur(8px)",
@@ -173,7 +188,7 @@ function ConstellationLines({ positions }) {
 }
 
 // ─── Main 3D Skill Constellation Scene ───
-function ConstellationScene({ selectedCategory, hoveredSkill, setHoveredSkill }) {
+function ConstellationScene({ selectedCategory, hoveredSkill, setHoveredSkill, isMobile }) {
   const groupRef = useRef();
 
   const filteredSkills = useMemo(() => {
@@ -187,12 +202,12 @@ function ConstellationScene({ selectedCategory, hoveredSkill, setHoveredSkill })
     return filteredSkills.map((_, i) => {
       const phi = Math.acos(-1 + (2 * i) / Math.max(count, 1));
       const theta = Math.sqrt(count * Math.PI) * phi;
-      const radius = 7.2;
+      const radius = isMobile ? 5.0 : 7.2;
       const v = new THREE.Vector3();
       v.setFromSphericalCoords(radius, phi, theta);
       return v;
     });
-  }, [filteredSkills]);
+  }, [filteredSkills, isMobile]);
 
   useFrame((_, delta) => {
     if (groupRef.current) {
@@ -221,7 +236,7 @@ function ConstellationScene({ selectedCategory, hoveredSkill, setHoveredSkill })
         {filteredSkills.map((skill, idx) => (
           <SkillNode
             key={skill.name}
-            skill={skill}
+            skill={{ ...skill, _isMobile: isMobile }}
             position={[positions[idx].x, positions[idx].y, positions[idx].z]}
             isHovered={hoveredSkill?.name === skill.name}
             onHover={(s) => setHoveredSkill(s)}
@@ -237,6 +252,7 @@ function ConstellationScene({ selectedCategory, hoveredSkill, setHoveredSkill })
 const SkillSphere = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [hoveredSkill, setHoveredSkill] = useState(null);
+  const isMobile = useIsMobile();
 
   return (
     <div style={{ position: "relative", width: "100%", height: "100%" }}>
@@ -244,24 +260,29 @@ const SkillSphere = () => {
       <div
         style={{
           position: "absolute",
-          top: "1.2rem",
+          top: isMobile ? "0.6rem" : "1.2rem",
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 15,
           display: "flex",
-          gap: "0.5rem",
+          gap: isMobile ? "0.35rem" : "0.5rem",
           flexWrap: "wrap",
           justifyContent: "center",
-          width: "90%",
+          width: isMobile ? "95%" : "90%",
           maxWidth: "700px",
+          background: isMobile ? "rgba(4,6,16,0.85)" : "transparent",
+          padding: isMobile ? "0.5rem 0.4rem" : "0",
+          borderRadius: isMobile ? "12px" : "0",
+          backdropFilter: isMobile ? "blur(12px)" : "none",
+          border: isMobile ? "1px solid rgba(255,255,255,0.06)" : "none",
         }}
       >
         <button
           onClick={() => setSelectedCategory("all")}
           style={{
-            padding: "0.4rem 1rem",
+            padding: isMobile ? "0.3rem 0.7rem" : "0.4rem 1rem",
             borderRadius: "100px",
-            fontSize: "0.78rem",
+            fontSize: isMobile ? "0.65rem" : "0.78rem",
             fontWeight: 600,
             border: `1px solid ${selectedCategory === "all" ? "#a78bfa" : "rgba(255,255,255,0.12)"}`,
             background: selectedCategory === "all" ? "rgba(124,58,237,0.3)" : "rgba(4,6,16,0.7)",
@@ -283,9 +304,9 @@ const SkillSphere = () => {
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
                 style={{
-                  padding: "0.4rem 1rem",
+                  padding: isMobile ? "0.3rem 0.7rem" : "0.4rem 1rem",
                   borderRadius: "100px",
-                  fontSize: "0.78rem",
+                  fontSize: isMobile ? "0.65rem" : "0.78rem",
                   fontWeight: 600,
                   border: `1px solid ${isSelected ? cat.color : "rgba(255,255,255,0.12)"}`,
                   background: isSelected ? `${cat.color}33` : "rgba(4,6,16,0.7)",
@@ -303,7 +324,7 @@ const SkillSphere = () => {
 
       {/* 3D WebGL Canvas */}
       <Canvas
-        camera={{ position: [0, 0, 19], fov: 48, near: 0.1, far: 100 }}
+        camera={{ position: [0, 0, isMobile ? 16 : 19], fov: isMobile ? 52 : 48, near: 0.1, far: 100 }}
         gl={{ alpha: true, antialias: true }}
         style={{ width: "100%", height: "100%" }}
       >
@@ -312,6 +333,7 @@ const SkillSphere = () => {
             selectedCategory={selectedCategory}
             hoveredSkill={hoveredSkill}
             setHoveredSkill={setHoveredSkill}
+            isMobile={isMobile}
           />
         </Suspense>
 
